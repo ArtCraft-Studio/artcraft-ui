@@ -63,6 +63,7 @@ export interface ButtonProps {
 /**
  * Button component with optional icon and animation effects
  */
+
 export const Button: React.FC<ButtonProps> = ({
   children,
   icon,
@@ -82,31 +83,27 @@ export const Button: React.FC<ButtonProps> = ({
   const finalIcon = impression ? <PlayIcon size={impressionIconSize} className="ml-1" /> : icon;
   const finalIconPosition = impression ? 'right' : iconPosition;
   const finalClassName = impression
-    ? `text-blue-500 hover:text-blue-600 hover:bg-blue-50 ${className}`
+    ? `button-app button-app-text ${className}`
     : className;
   const finalTitle = impression ? props.title || 'View Impressions' : props.title;
   const finalAriaLabel = impression
     ? props['aria-label'] || 'View Impressions'
-    : props['aria-label']; // Base classes that are always applied
-  const baseClasses =
-    'inline-flex items-center justify-center border-none outline-none cursor-pointer transition-all duration-200 ease-in-out relative overflow-hidden font-medium rounded-md focus:ring-2 focus:ring-blue-500';
+    : props['aria-label'];
 
-  // Size classes
+  // App-style base classes for visual style (not animation)
+  const baseClasses = 'button-app';
   const sizeClasses = {
-    small: 'px-3 py-1 text-xs h-7',
-    medium: 'px-4 py-2 text-sm h-9',
-    large: 'px-5 py-3 text-base h-11',
+    small: 'button-app-sm',
+    medium: 'button-app-md',
+    large: 'button-app-lg',
   };
-
-  // Variant classes
   const variantClasses = {
-    primary: 'bg-blue-500 text-white hover:bg-blue-600',
-    secondary: 'bg-gray-500 text-white hover:bg-gray-600',
-    outline: 'bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-50',
-    text: 'bg-transparent text-blue-500 hover:bg-blue-50 px-2',
+    primary: 'button-app-primary',
+    secondary: 'button-app-secondary',
+    outline: 'button-app-outline',
+    text: 'button-app-text',
   };
-
-  // Animation classes
+  // Animation classes (preserved)
   const animationClasses = {
     none: '',
     pulse: 'animate-pulse',
@@ -114,9 +111,8 @@ export const Button: React.FC<ButtonProps> = ({
     shake: 'animate-shake',
     rotate: 'animate-spin',
   };
-
   // Disabled classes
-  const disabledClasses = disabled ? 'opacity-50 pointer-events-none' : '';
+  const disabledClasses = disabled ? 'button-app-disabled' : '';
   // Combine all classes
   const buttonClasses = [
     baseClasses,
