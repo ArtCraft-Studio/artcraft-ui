@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Badge } from './index';
+import { vi } from 'vitest';
 
 describe('Badge', () => {
   it('renders children', () => {
@@ -16,7 +17,7 @@ describe('Badge', () => {
   });
 
   it('calls onClick', () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     render(<Badge onClick={onClick}>Clickable</Badge>);
     fireEvent.click(screen.getByText('Clickable'));
     expect(onClick).toHaveBeenCalled();

@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Button } from './Button';
 import { describe, it, expect, vi } from 'vitest';
@@ -16,10 +17,10 @@ describe('Button component', () => {
     );
 
     let button = screen.getByRole('button');
-    expect(button.className).toContain('inline-flex');
-    expect(button.className).toContain('bg-blue-500');
-    expect(button.className).toContain('px-4');
-    expect(button.className).toContain('py-2');
+    expect(button.className).toContain('button-app');
+    expect(button.className).toContain('button-app-md');
+    expect(button.className).toContain('button-app-primary');
+    expect(button.className).toContain('button-app-md');
 
     rerender(
       <Button variant="secondary" size="large" animation="pulse">
@@ -28,9 +29,8 @@ describe('Button component', () => {
     );
 
     button = screen.getByRole('button');
-    expect(button.className).toContain('bg-gray-500');
-    expect(button.className).toContain('px-5');
-    expect(button.className).toContain('py-3');
+    expect(button.className).toContain('button-app-secondary');
+    expect(button.className).toContain('button-app-lg'); // если size="large"
     expect(button.className).toContain('animate-pulse');
   });
 
@@ -65,10 +65,9 @@ describe('Button component', () => {
     render(<Button impression>View Impressions</Button>);
 
     const button = screen.getByRole('button');
-    expect(button.className).toContain('text-blue-500');
-    expect(button.className).toContain('bg-transparent');
-    expect(button.className).toContain('px-3'); // small size
-    expect(button.className).toContain('py-1'); // small size
+    expect(button.className).toContain('button-app');
+    expect(button.className).toContain('button-app-sm');
+    expect(button.className).toContain('button-app-text');
     expect(button.getAttribute('title')).toBe('View Impressions');
     expect(button.getAttribute('aria-label')).toBe('View Impressions');
 
@@ -93,7 +92,6 @@ describe('Button component', () => {
 
     const button = screen.getByRole('button') as HTMLButtonElement;
     expect(button.disabled).toBe(true);
-    expect(button.className).toContain('opacity-50');
-    expect(button.className).toContain('pointer-events-none');
+    expect(button.className).toContain('button-app-disabled');
   });
 });

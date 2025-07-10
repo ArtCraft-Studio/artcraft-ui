@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Form } from './index';
+import { vi } from 'vitest';
 
 describe('Form', () => {
   it('renders children', () => {
@@ -9,7 +10,7 @@ describe('Form', () => {
   });
 
   it('calls onSubmit', () => {
-    const onSubmit = jest.fn(e => e.preventDefault());
+    const onSubmit = vi.fn(e => e.preventDefault());
     render(<Form onSubmit={onSubmit}><button type="submit">Send</button></Form>);
     fireEvent.click(screen.getByText('Send'));
     expect(onSubmit).toHaveBeenCalled();

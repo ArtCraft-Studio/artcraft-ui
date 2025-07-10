@@ -29,30 +29,32 @@ export interface ColProps {
     xl?: number | 'auto';
 }
 
-const Grid: React.FC<GridProps> = ({
-    children,
-    className = '',
-    cols = 1,
-    gap = 4,
-    responsive
+const Grid: React.FC<GridProps & React.HTMLAttributes<HTMLDivElement>> = ({
+  children,
+  className = '',
+  cols = 1,
+  gap = 4,
+  responsive,
+  ...rest // ✅ Добавляем пропсы, которые не объявлены напрямую (например, data-testid)
 }) => {
-    const baseClass = 'ac-grid';
-    const colsClass = `ac-grid-cols-${cols}`;
-    const gapClass = `ac-grid-gap-${gap}`;
+  const baseClass = 'ac-grid';
+  const colsClass = `ac-grid-cols-${cols}`;
+  const gapClass = `ac-grid-gap-${gap}`;
 
-    let responsiveClasses = '';
-    if (responsive) {
-        if (responsive.sm) responsiveClasses += ` ac-grid-sm-cols-${responsive.sm}`;
-        if (responsive.md) responsiveClasses += ` ac-grid-md-cols-${responsive.md}`;
-        if (responsive.lg) responsiveClasses += ` ac-grid-lg-cols-${responsive.lg}`;
-    }
+  let responsiveClasses = '';
+  if (responsive) {
+    if (responsive.sm) responsiveClasses += ` ac-grid-sm-cols-${responsive.sm}`;
+    if (responsive.md) responsiveClasses += ` ac-grid-md-cols-${responsive.md}`;
+    if (responsive.lg) responsiveClasses += ` ac-grid-lg-cols-${responsive.lg}`;
+  }
 
-    return (
-        <div className={`${baseClass} ${colsClass} ${gapClass}${responsiveClasses} ${className}`}>
-            {children}
-        </div>
-    );
+  return (
+    <div className={`${baseClass} ${colsClass} ${gapClass}${responsiveClasses} ${className}`} {...rest}>
+      {children}
+    </div>
+  );
 };
+
 
 export const Row: React.FC<RowProps> = ({ children, className = '', gap = 4 }) => {
     return (

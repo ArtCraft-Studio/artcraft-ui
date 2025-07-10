@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Modal } from './index';
+import Modal from './Modal'
+import { vi } from 'vitest';
 
 describe('Modal', () => {
   it('does not render when closed', () => {
@@ -14,14 +15,14 @@ describe('Modal', () => {
   });
 
   it('calls onClose when backdrop is clicked', () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
     render(<Modal isOpen={true} onClose={onClose}>Test</Modal>);
     fireEvent.click(document.querySelector('.ac-modal-backdrop')!);
     expect(onClose).toHaveBeenCalled();
   });
 
   it('calls onClose when Escape is pressed', () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
     render(<Modal isOpen={true} onClose={onClose}>Test</Modal>);
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(onClose).toHaveBeenCalled();

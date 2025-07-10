@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Alert from './Alert';
+import { vi } from 'vitest';
 
 describe('Alert', () => {
   it('renders children', () => {
@@ -14,7 +15,7 @@ describe('Alert', () => {
   });
 
   it('calls onClose when close button is clicked', () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
     render(<Alert onClose={onClose}>Closable</Alert>);
     const btn = screen.getByRole('button');
     fireEvent.click(btn);
@@ -23,6 +24,7 @@ describe('Alert', () => {
 
   it('applies custom className', () => {
     render(<Alert className="custom-class">Class</Alert>);
-    expect(screen.getByText('Class').parentElement?.parentElement).toHaveClass('custom-class');
+    const alertElement = screen.getByRole('alert');
+    expect(alertElement).toHaveClass('custom-class');
   });
 });

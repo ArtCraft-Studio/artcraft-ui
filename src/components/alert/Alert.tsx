@@ -1,6 +1,5 @@
 
 import React from 'react';
-// Используем простые emoji вместо иконок для кроссплатформенности
 import Button from '../buttons/Button';
 import './Alert.css';
 
@@ -29,7 +28,7 @@ const icons: Record<string, React.ReactNode> = {
 const Alert: React.FC<AlertProps> = ({ variant = 'info', children, onClose, className = '' }) => {
   const classes = `ac-alert ${variantClasses[variant]} ${className}`;
   return (
-    <div className={classes}>
+    <div className={classes} role="alert">
       <div className="ac-alert-icon-wrapper">{icons[variant]}</div>
       <div className="ac-alert-content">{children}</div>
       {onClose && (

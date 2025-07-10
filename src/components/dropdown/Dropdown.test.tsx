@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Dropdown } from './index';
+import { vi } from 'vitest';
 
 describe('Dropdown', () => {
   it('renders trigger', () => {
@@ -25,7 +26,7 @@ describe('Dropdown', () => {
   });
 
   it('calls onClick for item', () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     render(
       <Dropdown trigger={<button>Open</button>}>
         <Dropdown.Item onClick={onClick}>Clickable</Dropdown.Item>

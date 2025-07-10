@@ -22,17 +22,23 @@ export interface CardFooterProps {
     className?: string;
 }
 
-const Card = ({ children, className = '', padding = 'md' }: CardProps) => {
-    const paddingClasses = {
-        none: '',
-        sm: 'ac-card--p-sm',
-        md: 'ac-card--p-md',
-        lg: 'ac-card--p-lg'
-    };
-    const defaultClasses = 'ac-card';
-    const classes = `${defaultClasses} ${paddingClasses[padding]} ${className}`;
-    return <div className={classes}>{children}</div>;
+const Card = ({ children, className = '', padding = 'md', ...rest }: CardProps & React.HTMLAttributes<HTMLDivElement>) => {
+  const paddingClasses = {
+    none: '',
+    sm: 'ac-card--p-sm',
+    md: 'ac-card--p-md',
+    lg: 'ac-card--p-lg',
+  };
+  const defaultClasses = 'ac-card';
+  const classes = `${defaultClasses} ${paddingClasses[padding]} ${className}`;
+  
+  return (
+    <div className={classes} {...rest}>
+      {children}
+    </div>
+  );
 };
+
 
 const CardHeader: React.FC<CardHeaderProps> = ({ children, className = '' }) => {
     const defaultClasses = 'ac-card__header';

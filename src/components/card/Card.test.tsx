@@ -9,9 +9,10 @@ describe('Card', () => {
   });
 
   it('applies custom className', () => {
-    render(<Card className="custom-class">Class</Card>);
-    expect(screen.getByText('Class').parentElement).toHaveClass('custom-class');
-  });
+  render(<Card className="custom-class" data-testid="card">Class</Card>);
+  expect(screen.getByTestId('card')).toHaveClass('custom-class');
+});
+
 
   it('renders header, body, and footer', () => {
     render(
