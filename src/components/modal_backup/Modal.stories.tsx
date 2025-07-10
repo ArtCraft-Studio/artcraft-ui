@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Modal } from './index';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+// Update the import path to the actual file where Modal is exported
+import Modal from './Modal';
 import React from 'react';
 
 const meta: Meta<typeof Modal> = {

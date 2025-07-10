@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Alert, { AlertProps } from './Alert';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import Alert from './Alert';
 import React from 'react';
 
 const meta: Meta<typeof Alert> = {

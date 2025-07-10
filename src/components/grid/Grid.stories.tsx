@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Grid, Row, Col, Container } from './index';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Grid, Col, Container } from './index';
 
 const meta: Meta<typeof Grid> = {
   title: 'Components/Grid',
