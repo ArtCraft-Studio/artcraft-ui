@@ -44,7 +44,6 @@ const Modal = ({ isOpen, onClose, children, size = 'md', className = '' }: Modal
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
-
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
@@ -58,60 +57,29 @@ const Modal = ({ isOpen, onClose, children, size = 'md', className = '' }: Modal
             document.removeEventListener('keydown', handleEscape);
         };
     }, [isOpen, onClose]);
-
-    if (!isOpen) return null;
-
     return (
-        <div className="ac-modal-overlay">
+        <div className={`ac-modal-overlay${isOpen ? ' ac-modal-overlay--open' : ''}`}>
             <div className="ac-modal-center">
-                {/* Backdrop */}
-                <div
-                    className="ac-modal-backdrop"
-                    onClick={onClose}
-                />
-                {/* Modal */}
-                <div className={`ac-modal ${sizeClasses[size]} ${className}`}>
-                    {children}
-                </div>
+                <div className={`ac-modal-backdrop${isOpen ? ' ac-modal-backdrop--open' : ''}`} onClick={onClose} />
+                <div className={`ac-modal${isOpen ? ' ac-modal--open' : ''} ${sizeClasses[size]} ${className}`}>{children}</div>
             </div>
         </div>
     );
 };
 
-const ModalHeader: React.FC<ModalHeaderProps> = ({ children, onClose, className = '' }) => {
-    return (
-        <div className={`ac-modal__header ${className}`}>
-            <h3 className="ac-modal__title">{children}</h3>
-            {onClose && (
-                <Button
-                    variant="text"
-                    size="small"
-                    onClick={onClose}
-                    className="ac-modal__close"
-                >
-                    <span aria-label="close" role="img">✖️</span>
-                </Button>
-            )}
-        </div>
-    );
-};
-
-const ModalBody: React.FC<ModalBodyProps> = ({ children, className = '' }) => {
-    return <div className={`ac-modal__body ${className}`}>{children}</div>;
-};
-
-const ModalFooter: React.FC<ModalFooterProps> = ({ children, className = '' }) => {
-    return (
-        <div className={`ac-modal__footer ${className}`}>
-            {children}
-        </div>
-    );
-};
-
-const ModalWithComponents = Object.assign(Modal, {
-    Header: ModalHeader,
-    Body: ModalBody,
-    Footer: ModalFooter,
-});
-
+const ModalHeader: React.FC<ModalHeaderProps> = ({ children, onClose, className = '' }) => (
+    <div className={`ac-modal__header ${className}`}>
+        <h3 className="ac-modal__title">{children}</h3>
+        {onClose && (
+            <Button variant="text" size="small" onClick={onClose} className="ac-modal__close">
+                <span aria-label="close" role="img">✖️</span>
+            </Button>
+        )}
+    </div>
+);
+const ModalBody: React.FC<ModalBodyProps> = ({ children, className = '' }) => <div className={`ac-modal__body ${className}`}>{children}</div>;
+const ModalFooter: React.FC<ModalFooterProps> = ({ children, className = '' }) => (
+    <div className={`ac-modal__footer ${className}`}>{children}</div>
+);
+const ModalWithComponents = Object.assign(Modal, { Header: ModalHeader, Body: ModalBody, Footer: ModalFooter });
 export default ModalWithComponents;

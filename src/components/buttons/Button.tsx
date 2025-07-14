@@ -1,68 +1,23 @@
 import * as React from 'react';
 import './Button.css';
-import { PlayIcon } from '../icons';
+import { PlayIcon } from '../icons/PlayIcon';
 
 export interface ButtonProps {
-  /**
-   * Content to display inside the button
-   */
   children?: React.ReactNode;
-  /**
-   * Icon to display inside the button
-   */
   icon?: React.ReactNode;
-  /**
-   * Position of the icon (left or right)
-   */
   iconPosition?: 'left' | 'right';
-  /**
-   * Animation effect to apply to the button
-   */
   animation?: 'pulse' | 'bounce' | 'shake' | 'rotate' | 'none';
-  /**
-   * Size of the button
-   */
   size?: 'small' | 'medium' | 'large';
-  /**
-   * Variant of the button
-   */
   variant?: 'primary' | 'secondary' | 'outline' | 'text';
-  /**
-   * Additional CSS class names
-   */
   className?: string;
-  /**
-   * Click handler
-   */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  /**
-   * Button disabled state
-   */
   disabled?: boolean;
-  /**
-   * Button type
-   */
   type?: 'button' | 'submit' | 'reset';
-  /**
-   * Title attribute
-   */
-  title?: string /**
-   * Aria label for accessibility
-   */;
+  title?: string;
   'aria-label'?: string;
-  /**
-   * When true, shows as an impression button with play icon
-   */
   impression?: boolean;
-  /**
-   * Size of the impression play icon
-   */
   impressionIconSize?: number;
 }
-
-/**
- * Button component with optional icon and animation effects
- */
 
 export const Button: React.FC<ButtonProps> = ({
   children,
@@ -77,7 +32,6 @@ export const Button: React.FC<ButtonProps> = ({
   impressionIconSize = 14,
   ...props
 }) => {
-  // If impression is true, override some defaults
   const finalVariant = impression ? 'text' : variant;
   const finalSize = impression ? 'small' : size;
   const finalIcon = impression ? <PlayIcon size={impressionIconSize} className="ml-1" /> : icon;
@@ -89,8 +43,6 @@ export const Button: React.FC<ButtonProps> = ({
   const finalAriaLabel = impression
     ? props['aria-label'] || 'View Impressions'
     : props['aria-label'];
-
-  // App-style base classes for visual style (not animation)
   const baseClasses = 'button-app';
   const sizeClasses = {
     small: 'button-app-sm',
@@ -103,7 +55,6 @@ export const Button: React.FC<ButtonProps> = ({
     outline: 'button-app-outline',
     text: 'button-app-text',
   };
-  // Animation classes (preserved)
   const animationClasses = {
     none: '',
     pulse: 'animate-pulse',
@@ -111,9 +62,7 @@ export const Button: React.FC<ButtonProps> = ({
     shake: 'animate-shake',
     rotate: 'animate-spin',
   };
-  // Disabled classes
   const disabledClasses = disabled ? 'button-app-disabled' : '';
-  // Combine all classes
   const buttonClasses = [
     baseClasses,
     sizeClasses[finalSize],
@@ -124,8 +73,6 @@ export const Button: React.FC<ButtonProps> = ({
   ]
     .filter(Boolean)
     .join(' ');
-
-  // Debug logging for development
   if (process.env.NODE_ENV === 'development') {
     console.log('Button classes:', buttonClasses);
   }

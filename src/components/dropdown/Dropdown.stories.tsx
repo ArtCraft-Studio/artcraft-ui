@@ -12,11 +12,11 @@ type Story = StoryObj<typeof Dropdown>;
 
 export const Default: Story = {
   render: () => (
-    <Dropdown trigger={<button>Открыть меню</button>}>
-      <Dropdown.Item>Пункт 1</Dropdown.Item>
-      <Dropdown.Item>Пункт 2</Dropdown.Item>
+    <Dropdown trigger={<button>Open menu</button>}>
+      <Dropdown.Item>Item 1</Dropdown.Item>
+      <Dropdown.Item>Item 2</Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item danger>Удалить</Dropdown.Item>
+      <Dropdown.Item danger>Delete</Dropdown.Item>
     </Dropdown>
   ),
 };

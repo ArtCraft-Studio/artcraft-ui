@@ -12,23 +12,23 @@ type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
   args: {
-    label: 'Имя пользователя',
-    placeholder: 'Введите имя',
+    label: 'User name',
+    placeholder: 'Enter name',
   },
 };
 
 export const WithError: Story = {
   args: {
     label: 'Email',
-    placeholder: 'Введите email',
-    error: 'Некорректный email',
+    placeholder: 'Enter email',
+    error: 'Invalid email',
   },
 };
 
 export const WithIcon: Story = {
   args: {
-    label: 'Поиск',
-    placeholder: 'Введите запрос',
+    label: 'Search',
+    placeholder: 'Enter query',
     icon: <span role="img" aria-label="search">🔍</span>,
   },
 };

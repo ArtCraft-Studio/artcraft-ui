@@ -30,7 +30,7 @@ describe('Button component', () => {
 
     button = screen.getByRole('button');
     expect(button.className).toContain('button-app-secondary');
-    expect(button.className).toContain('button-app-lg'); // если size="large"
+    expect(button.className).toContain('button-app-lg');
     expect(button.className).toContain('animate-pulse');
   });
 
@@ -71,7 +71,6 @@ describe('Button component', () => {
     expect(button.getAttribute('title')).toBe('View Impressions');
     expect(button.getAttribute('aria-label')).toBe('View Impressions');
 
-    // Should have play icon on the right
     const iconSpan = button.querySelector('span.ml-1');
     expect(iconSpan).toBeDefined();
   });

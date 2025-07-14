@@ -1,6 +1,5 @@
-// filepath: /artcraft-ui/artcraft-ui/src/components/Input.tsx
 import React from 'react';
-import './Input.css'; // Assuming you have some styles for the input components
+import './Input.css';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label?: string;
