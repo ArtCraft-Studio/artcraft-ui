@@ -1,27 +1,40 @@
-/* Dropdown component styles */
+.ac-dropdown-wrapper {
+  max-width: none;
+  overflow: visible;
+  display: block;
+  position: relative;
+}
+
 .ac-dropdown {
   position: relative;
   display: inline-block;
+  overflow: visible;
+  max-width: none;
+  width: fit-content;
+  min-width: 120px;
 }
 .ac-dropdown__trigger {
   cursor: pointer;
 }
 .ac-dropdown__menu {
   position: absolute;
-  right: 0;
+  left: 0;
+  top: 100%;
+  min-width: 220px;
+  max-width: none;
   margin-top: 0.5rem;
-  width: 12rem;
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   border: 1px solid #e5e7eb;
   padding: 0.25rem 0;
-  z-index: 50;
+  z-index: 1000;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(-8px) scale(0.98);
   transition: opacity 0.18s cubic-bezier(0.4,0,0.2,1), transform 0.18s cubic-bezier(0.4,0,0.2,1), visibility 0.18s cubic-bezier(0.4,0,0.2,1);
+  overflow: visible;
 }
 .ac-dropdown__menu--open {
   opacity: 1;

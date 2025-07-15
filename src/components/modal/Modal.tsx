@@ -35,16 +35,6 @@ const Modal = ({ isOpen, onClose, children, size = 'md', className = '' }: Modal
     };
 
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [isOpen]);
-    useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 onClose();
@@ -57,11 +47,12 @@ const Modal = ({ isOpen, onClose, children, size = 'md', className = '' }: Modal
             document.removeEventListener('keydown', handleEscape);
         };
     }, [isOpen, onClose]);
+    if (!isOpen) return null;
     return (
-        <div className={`ac-modal-overlay${isOpen ? ' ac-modal-overlay--open' : ''}`}>
+        <div className={`ac-modal-overlay ac-modal-overlay--open`}>
             <div className="ac-modal-center">
-                <div className={`ac-modal-backdrop${isOpen ? ' ac-modal-backdrop--open' : ''}`} onClick={onClose} />
-                <div className={`ac-modal${isOpen ? ' ac-modal--open' : ''} ${sizeClasses[size]} ${className}`}>{children}</div>
+                <div className={`ac-modal-backdrop ac-modal-backdrop--open`} onClick={onClose} />
+                <div className={`ac-modal ac-modal--open ${sizeClasses[size]} ${className}`}>{children}</div>
             </div>
         </div>
     );

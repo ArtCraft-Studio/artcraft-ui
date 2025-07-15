@@ -1,7 +1,7 @@
 .ac-modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 2000;
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
@@ -41,11 +41,14 @@
   box-shadow: 0 8px 32px rgba(0,0,0,0.25);
   width: 100%;
   color: #f1f5f9;
-  z-index: 10;
+  z-index: 2001;
   opacity: 0;
   transform: translateY(32px) scale(0.98);
   transition: opacity 0.22s cubic-bezier(0.4,0,0.2,1), transform 0.22s cubic-bezier(0.4,0,0.2,1);
   pointer-events: none;
+  min-height: 400px; /* или 60vh, в зависимости от нужной высоты */
+  max-height: 90vh;  /* чтобы не выходило за пределы экрана */
+  overflow-y: auto;  /* прокрутка при переполнении */
 }
 .ac-modal--open {
   opacity: 1;
