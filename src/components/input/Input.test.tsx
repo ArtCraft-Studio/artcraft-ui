@@ -3,6 +3,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Input from './Input'; 
 import '@testing-library/jest-dom';
 
+// @ts-expect-error: Support both Vitest (vi) and Jest (jest) test runners
+const fn = typeof vi !== 'undefined' ? vi.fn : (typeof jest !== 'undefined' ? jest.fn : () => {});
+
 describe('Input component', () => {
   test('renders label and placeholder', () => {
     render(<Input label="Name" placeholder="Enter name" />);
@@ -50,7 +53,7 @@ describe('Input', () => {
   });
 
   it('calls onChange when typing', () => {
-    const handleChange = jest.fn();
+    const handleChange = fn();
     render(<Input placeholder="Type here" onChange={handleChange} />);
     fireEvent.change(screen.getByPlaceholderText('Type here'), { target: { value: 'abc' } });
     expect(handleChange).toHaveBeenCalled();
