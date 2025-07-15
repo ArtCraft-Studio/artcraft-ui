@@ -46,9 +46,9 @@
   transform: translateY(32px) scale(0.98);
   transition: opacity 0.22s cubic-bezier(0.4,0,0.2,1), transform 0.22s cubic-bezier(0.4,0,0.2,1);
   pointer-events: none;
-  min-height: 400px; /* или 60vh, в зависимости от нужной высоты */
-  max-height: 90vh;  /* чтобы не выходило за пределы экрана */
-  overflow-y: auto;  /* прокрутка при переполнении */
+  min-height: 400px; 
+  max-height: 90vh;  
+  overflow-y: auto; 
 }
 .ac-modal--open {
   opacity: 1;

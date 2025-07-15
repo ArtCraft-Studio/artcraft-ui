@@ -14,22 +14,22 @@ export const Default: Story = {
   render: () => (
     <Form onSubmit={e => e.preventDefault()}>
       <Form.Group>
-        <Form.Label htmlFor="name">Имя</Form.Label>
-        <Form.Control id="name" placeholder="Введите имя" />
+        <Form.Label htmlFor="name">Name</Form.Label>
+        <Form.Control id="name" placeholder="Enter name" />
       </Form.Group>
       <Form.Group>
-        <Form.Label htmlFor="desc">Описание</Form.Label>
-        <Form.Control as="textarea" id="desc" placeholder="Описание..." rows={3} />
+        <Form.Label htmlFor="desc">Description</Form.Label>
+        <Form.Control as="textarea" id="desc" placeholder="Description..." rows={3} />
       </Form.Group>
       <Form.Group>
-        <Form.Label htmlFor="select">Выбор</Form.Label>
+        <Form.Label htmlFor="select">Select</Form.Label>
         <Form.Select id="select">
-          <option>Вариант 1</option>
-          <option>Вариант 2</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
         </Form.Select>
       </Form.Group>
-      <Form.Text>Подпись или подсказка</Form.Text>
-      <button type="submit">Сохранить</button>
+      <Form.Text>Caption or hint</Form.Text>
+      <button type="submit">Save</button>
     </Form>
   ),
 };

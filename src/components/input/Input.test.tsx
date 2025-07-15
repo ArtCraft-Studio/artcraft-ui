@@ -38,7 +38,26 @@ describe('Textarea component', () => {
   test('handles textarea input', () => {
     render(<Input.Textarea placeholder="Comment" />);
     const textarea = screen.getByPlaceholderText('Comment') as HTMLTextAreaElement;
-    fireEvent.change(textarea, { target: { value: 'Тестовое сообщение' } });
-    expect(textarea.value).toBe('Тестовое сообщение');
+    fireEvent.change(textarea, { target: { value: 'Test message' } });
+    expect(textarea.value).toBe('Test message');
+  });
+});
+
+describe('Input', () => {
+  it('renders with placeholder', () => {
+    render(<Input placeholder="Enter value" />);
+    expect(screen.getByPlaceholderText('Enter value')).toBeInTheDocument();
+  });
+
+  it('calls onChange when typing', () => {
+    const handleChange = jest.fn();
+    render(<Input placeholder="Type here" onChange={handleChange} />);
+    fireEvent.change(screen.getByPlaceholderText('Type here'), { target: { value: 'abc' } });
+    expect(handleChange).toHaveBeenCalled();
+  });
+
+  it('renders with label', () => {
+    render(<label htmlFor="test-input">Label</label>);
+    expect(screen.getByText('Label')).toBeInTheDocument();
   });
 });

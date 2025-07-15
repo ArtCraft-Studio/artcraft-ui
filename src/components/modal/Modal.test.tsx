@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Modal from './Modal';
 
-// @ts-ignore
+// @ts-expect-error: Support both Vitest (vi) and Jest (jest) test runners
 const fn = typeof vi !== 'undefined' ? vi.fn : (typeof jest !== 'undefined' ? jest.fn : () => {});
 
 describe('Modal', () => {
