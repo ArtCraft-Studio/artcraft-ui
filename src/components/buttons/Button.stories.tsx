@@ -40,7 +40,6 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-// Basic button
 export const Default: Story = {
   args: {
     children: 'Button',
@@ -49,7 +48,6 @@ export const Default: Story = {
   },
 };
 
-// Button with icon
 export const WithIcon: Story = {
   args: {
     children: 'Play',
@@ -60,7 +58,6 @@ export const WithIcon: Story = {
   },
 };
 
-// Icon only button
 export const IconOnly: Story = {
   args: {
     icon: <PlayIcon />,
@@ -70,7 +67,6 @@ export const IconOnly: Story = {
   },
 };
 
-// Button with animation
 export const WithAnimation: Story = {
   args: {
     children: 'Animated Button',
@@ -81,7 +77,6 @@ export const WithAnimation: Story = {
   },
 };
 
-// Different variants
 export const Variants: Story = {
   render: () => (
     <div className="flex gap-3">
@@ -93,7 +88,6 @@ export const Variants: Story = {
   ),
 };
 
-// Different sizes
 export const Sizes: Story = {
   render: () => (
     <div className="flex gap-3 items-center">
@@ -104,7 +98,6 @@ export const Sizes: Story = {
   ),
 };
 
-// Impression button
 export const ImpressionButton: Story = {
   args: {
     children: 'View Impressions',
@@ -113,7 +106,6 @@ export const ImpressionButton: Story = {
   },
 };
 
-// Multiple impression buttons
 export const ImpressionButtons: Story = {
   render: () => (
     <div className="flex gap-3 items-center">

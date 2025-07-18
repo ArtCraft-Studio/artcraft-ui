@@ -1,0 +1,4 @@
+.sbdocs-content, .sbdocs-wrapper, .sbdocs, .sb-show-main, .sb-main, #storybook-root, #root {
+  overflow: visible !important;
+  max-width: none !important;
+}

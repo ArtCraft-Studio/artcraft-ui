@@ -19,8 +19,9 @@
     "declarationDir": "dist/types",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["jest", "node"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "**/*.stories.tsx", "**/*.test.tsx"]
+  "exclude": ["node_modules", "dist", "**/*.stories.tsx"]
 }

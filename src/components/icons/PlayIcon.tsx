@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { IconProps } from './types';
 
-/**
- * Play icon component
- */
 export const PlayIcon: React.FC<IconProps> = ({
   size = 16,
   color = 'currentColor',

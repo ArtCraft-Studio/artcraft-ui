@@ -1,7 +1,6 @@
 /* Global styles for Storybook */
 @import '../src/components/buttons/Button.css';
 
-/* Ensure styles are applied globally in Storybook */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -9,3 +8,27 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.docs-story {
+  min-height: 100vh !important;
+  overflow: visible !important;
+  padding: 0 !important;
+}
+
+.docs-story .ac-modal-overlay,
+.docs-story .ac-dropdown-wrapper {
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
+
+.docs-story > div:has(.ac-modal-overlay),
+.docs-story > div:has(.ac-dropdown-wrapper) {
+  overflow: visible !important;
+}
+
+.docs-story > div:not(:has(.ac-modal-overlay)):not(:has(.ac-dropdown-wrapper)) {
+  overflow: auto !important;
+  padding: 32px 22px;
+}
+
+
